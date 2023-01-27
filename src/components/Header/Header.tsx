@@ -1,8 +1,12 @@
 import * as Styled from './headerStyles';
 import { ShoppingCartSimple } from 'phosphor-react';
 import { Sidebar } from '../SideBar/Sidebar';
+import { useState } from 'react';
+import { IDataContext, useCartData } from '@/context/cartContext';
 
 export function Header() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { cartItems } = useCartData() as IDataContext;
   return (
     <>
       <Styled.Header>
@@ -10,11 +14,11 @@ export function Header() {
           <Styled.MKSLogo>MKS</Styled.MKSLogo>{' '}
           <Styled.Span>Sistemas</Styled.Span>
         </div>
-        <Styled.CartButton>
-          <ShoppingCartSimple size={20} weight='fill' /> 0
+        <Styled.CartButton onClick={() => setIsSidebarOpen((prev) => !prev)}>
+          <ShoppingCartSimple size={20} weight='fill' /> {cartItems.length}
         </Styled.CartButton>
       </Styled.Header>
-      <Sidebar />
+      {isSidebarOpen && <Sidebar setStatus={setIsSidebarOpen} />}
     </>
   );
 }

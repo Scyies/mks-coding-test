@@ -1,12 +1,15 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
+import CartContextProvider from '@/context/cartContext';
 import theme from '../styles/theme';
 import '../styles/reset.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <CartContextProvider>
+        <Component {...pageProps} />
+      </CartContextProvider>
     </ThemeProvider>
   );
 }

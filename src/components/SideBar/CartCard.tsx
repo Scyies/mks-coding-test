@@ -1,22 +1,60 @@
+import { IDataContext, useCartData } from '@/context/cartContext';
 import Image from 'next/image';
-import defaultImg from '../../../public/default.jpg';
 import * as Styled from './cartCardStyles';
 
-export function CartCard() {
+interface IProps {
+  name: string;
+  img: string;
+  price: string;
+  id: number;
+  quantity?: number;
+  cartPrice?: string;
+}
+
+export function CartCard({
+  name,
+  img,
+  quantity = 1,
+  price,
+  cartPrice = price,
+  id,
+}: IProps) {
+  const { cartItems, setCartItems } = useCartData() as IDataContext;
+
+  function addItemQuantity(id: number, signal: 'diminuir' | 'aumentar') {
+    setCartItems((prev) =>
+      prev.map((item) => {
+        const resolver =
+          signal === 'diminuir' ? item.quantity! - 1 : item.quantity! + 1;
+        if (item.id === id) {
+          return {
+            ...item,
+            quantity: resolver,
+            cartPrice: String(Number(item.price) * resolver),
+          };
+        }
+        return item;
+      })
+    );
+  }
+
+  function deleteItemFromCart(id: number) {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  }
   return (
     <Styled.CardContainer>
-      <Image src={defaultImg} alt='' height={80} width={80} />
-      <p>Apple Watch Series 4 GPS</p>
+      <Image src={img} alt='' height={80} width={80} />
+      <p>{name}</p>
       <Styled.QtdContainer>
         <Styled.Qtd>Qtd:</Styled.Qtd>
         <Styled.QtdCounter>
-          <span>-</span>
-          <Styled.QtdNumber>1</Styled.QtdNumber>
-          <span>+</span>
+          <span onClick={() => addItemQuantity(id, 'diminuir')}>-</span>
+          <Styled.QtdNumber>{quantity}</Styled.QtdNumber>
+          <span onClick={() => addItemQuantity(id, 'aumentar')}>+</span>
         </Styled.QtdCounter>
       </Styled.QtdContainer>
-      <Styled.ProductPrice>R$399</Styled.ProductPrice>
-      <Styled.Exit>X</Styled.Exit>
+      <Styled.ProductPrice>R${cartPrice}</Styled.ProductPrice>
+      <Styled.Exit onClick={() => deleteItemFromCart(id)}>X</Styled.Exit>
     </Styled.CardContainer>
   );
 }

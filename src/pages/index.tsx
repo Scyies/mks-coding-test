@@ -1,11 +1,15 @@
 import { Header } from '@/components/Header/Header';
 import Head from 'next/head';
 import * as Styled from '../styles/mainStyles';
-import Image from 'next/image';
 import { Products } from '@/components/Products/Products';
 import { Footer } from '@/components/Footer/Footer';
+import { useState } from 'react';
+import { IData } from '@/hooks/useFetch';
 
 export default function Home() {
+  // Aqui vai ter o controle do array de produtos do carrinho
+  // vai passar o setter para os products e o conteudo para o header/sidebar
+
   return (
     <>
       <Head>

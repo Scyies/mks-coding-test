@@ -6,7 +6,7 @@ export const Section = styled.section`
   grid-template-rows: repeat(2, 1fr);
   gap: 1.5rem;
 
-  max-width: 1024px;
+  max-width: 940px;
   margin: 0 auto;
   padding: 1rem;
 `;
@@ -16,6 +16,8 @@ export const CardContainer = styled.div`
 
   border-radius: 0.5rem;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
+
+  background-color: ${(props) => props.theme.white};
 
   display: flex;
   flex-direction: column;

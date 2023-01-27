@@ -6,7 +6,7 @@ export const Sidebar = styled.aside`
   justify-content: space-between;
   gap: 1.5rem;
 
-  position: absolute;
+  position: fixed;
   height: 100vh;
   z-index: 1;
   right: 0;
@@ -17,6 +17,18 @@ export const Sidebar = styled.aside`
   padding: 2rem 2rem 0 2rem;
 
   background-color: ${(props) => props.theme.blue};
+
+  animation: 500ms ease;
+  animation-name: translateIn;
+
+  @keyframes translateIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
 `;
 
 export const FlexCenter = styled.div`
@@ -36,6 +48,8 @@ export const Exit = styled.span`
   background-color: ${(props) => props.theme.black};
   color: ${(props) => props.theme.white};
 
+  text-size: 1.75rem;
+
   height: 2.5rem;
   width: 2.5rem;
 
@@ -45,6 +59,8 @@ export const Exit = styled.span`
 
   border-radius: 50%;
   aspect-ratio: 1 / 1;
+
+  cursor: pointer;
 `;
 
 export const Button = styled.button`
@@ -56,6 +72,8 @@ export const Button = styled.button`
   margin-left: -2rem;
   margin-right: -2rem;
   padding: 2rem 0;
+
+  border: none;
 
   cursor: pointer;
 `;
