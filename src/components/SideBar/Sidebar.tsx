@@ -19,7 +19,7 @@ export function Sidebar({ setStatus }: IProps) {
         <Styled.HeadingText>Carrinho de compras</Styled.HeadingText>
         <Styled.Exit onClick={() => setStatus((prev) => !prev)}>X</Styled.Exit>
       </Styled.FlexCenter>
-      <Styled.ProductsSection>
+      <Styled.ProductsSection data-testid='section'>
         {cartItems.map((item) => (
           <CartCard
             name={item.name}

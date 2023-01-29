@@ -10,7 +10,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const CartContext = createContext<IDataContext>({} as IDataContext);
+export const CartContext = createContext<IDataContext>({} as IDataContext);
 
 export default function cartContext({ children }: IProps) {
   const [cartItems, setCartItems] = useState<IData[]>([]);

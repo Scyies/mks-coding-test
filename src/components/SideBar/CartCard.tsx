@@ -22,6 +22,10 @@ export function CartCard({
   const { cartItems, setCartItems } = useCartData() as IDataContext;
 
   function addItemQuantity(id: number, signal: 'diminuir' | 'aumentar') {
+    const currentItem = cartItems.filter((item) => item.id === id);
+    if (currentItem[0].quantity === 1 && signal === 'diminuir') {
+      return setCartItems((prev) => prev.filter((item) => item.id !== id));
+    }
     setCartItems((prev) =>
       prev.map((item) => {
         const resolver =

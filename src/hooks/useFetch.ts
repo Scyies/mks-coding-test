@@ -12,13 +12,13 @@ export interface IData {
 }
 
 export interface IResponse {
-  data: IData[] | null;
+  data: IData[];
   loading: boolean;
   error: any;
 }
 
 export function useFetch(url: string): IResponse {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<IData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
 
@@ -27,6 +27,14 @@ export function useFetch(url: string): IResponse {
       try {
         const response: AxiosResponse = await axios.get(url);
         setData(response.data.products);
+        setData((prev) =>
+          prev.map((item) => {
+            return {
+              ...item,
+              price: String(Number(item.price) * 1),
+            };
+          })
+        );
         setLoading(false);
       } catch (err: any) {
         setError(err);
