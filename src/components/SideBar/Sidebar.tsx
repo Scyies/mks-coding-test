@@ -5,16 +5,17 @@ import * as Styled from './sidebarStyles';
 
 interface IProps {
   setStatus: Dispatch<SetStateAction<boolean>>;
+  status: boolean;
 }
 
-export function Sidebar({ setStatus }: IProps) {
+export function Sidebar({ setStatus, status }: IProps) {
   const { cartItems } = useCartData() as IDataContext;
 
   const totalPrice = cartItems.reduce((acc, object) => {
     return acc + Number(object.cartPrice!);
   }, 0);
   return (
-    <Styled.Sidebar>
+    <Styled.Sidebar aria-expanded={status}>
       <Styled.FlexCenter>
         <Styled.HeadingText>Carrinho de compras</Styled.HeadingText>
         <Styled.Exit onClick={() => setStatus((prev) => !prev)}>X</Styled.Exit>

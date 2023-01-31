@@ -52,13 +52,19 @@ export function CartCard({
       <Styled.QtdContainer>
         <Styled.Qtd>Qtd:</Styled.Qtd>
         <Styled.QtdCounter>
-          <span onClick={() => addItemQuantity(id, 'diminuir')}>-</span>
-          <Styled.QtdNumber>{quantity}</Styled.QtdNumber>
-          <span onClick={() => addItemQuantity(id, 'aumentar')}>+</span>
+          <span role='button' onClick={() => addItemQuantity(id, 'diminuir')}>
+            -
+          </span>
+          <Styled.QtdNumber data-testid='quantity'>{quantity}</Styled.QtdNumber>
+          <span role='button' onClick={() => addItemQuantity(id, 'aumentar')}>
+            +
+          </span>
         </Styled.QtdCounter>
       </Styled.QtdContainer>
       <Styled.ProductPrice>R${cartPrice}</Styled.ProductPrice>
-      <Styled.Exit onClick={() => deleteItemFromCart(id)}>X</Styled.Exit>
+      <Styled.Exit onClick={() => deleteItemFromCart(id)} role='button'>
+        X
+      </Styled.Exit>
     </Styled.CardContainer>
   );
 }

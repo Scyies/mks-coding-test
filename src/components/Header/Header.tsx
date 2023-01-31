@@ -18,7 +18,9 @@ export function Header() {
           <ShoppingCartSimple size={20} weight='fill' /> {cartItems.length}
         </Styled.CartButton>
       </Styled.Header>
-      {isSidebarOpen && <Sidebar setStatus={setIsSidebarOpen} />}
+      {isSidebarOpen && (
+        <Sidebar setStatus={setIsSidebarOpen} status={isSidebarOpen} />
+      )}
     </>
   );
 }

@@ -12,7 +12,7 @@ interface IProps {
 
 export const CartContext = createContext<IDataContext>({} as IDataContext);
 
-export default function cartContext({ children }: IProps) {
+export default function CartProvider({ children }: IProps) {
   const [cartItems, setCartItems] = useState<IData[]>([]);
 
   return (

@@ -51,14 +51,17 @@ export function ProductCard({ name, img, desc, price, id }: IProps) {
   }
 
   return (
-    <Styled.CardContainer>
+    <Styled.CardContainer role='productContainer'>
       <Image src={img} alt='' width={150} height={150} />
       <Styled.ProductNameContainer>
         <Styled.ProductName>{name}</Styled.ProductName>
         <Styled.ProductPrice>R${price}</Styled.ProductPrice>
       </Styled.ProductNameContainer>
       <Styled.ProductDescription>{desc}</Styled.ProductDescription>
-      <Styled.ProductButton onClick={() => addProductToCart(id)}>
+      <Styled.ProductButton
+        onClick={() => addProductToCart(id)}
+        data-testid='comprar'
+      >
         <ShoppingBagOpen size={20} weight='bold' /> COMPRAR
       </Styled.ProductButton>
     </Styled.CardContainer>
