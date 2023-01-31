@@ -108,7 +108,7 @@ describe('testando o carrinho de compras', () => {
     });
 
     //exclui o produto do carrinho
-    fireEvent.click(deleteButton[0]);
+    fireEvent.click(deleteButton[1]);
 
     //verificase o produto foi removido
     expect(productsSection.children).toHaveLength(0);

@@ -44,7 +44,7 @@ export const HeadingText = styled.p`
   font-size: 1.75rem;
 `;
 
-export const Exit = styled.span`
+export const Exit = styled.button`
   background-color: ${(props) => props.theme.black};
   color: ${(props) => props.theme.white};
 

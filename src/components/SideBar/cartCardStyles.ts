@@ -16,7 +16,7 @@ export const CardContainer = styled.div`
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.05);
 `;
 
-export const Exit = styled.span`
+export const Exit = styled.button`
   position: absolute;
   right: -0.5rem;
   top: -0.5rem;
@@ -62,10 +62,16 @@ export const QtdCounter = styled.div`
 export const QtdNumber = styled.span`
   border-left: 1px solid ${(props) => props.theme.gray100};
   border-right: 1px solid ${(props) => props.theme.gray100};
-  padding: 0 0.25rem;
+  padding: 0 0.5rem;
 `;
 
 export const ProductPrice = styled.span`
   color: ${(props) => props.theme.black};
   font-weight: 700;
+`;
+
+export const ChangeQuantity = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 `;
