@@ -1,7 +1,7 @@
 import * as Styled from './productsStyles';
 
 import { ProductCard } from './ProductCard';
-import { IData, useFetch } from '@/hooks/useFetch';
+import { useFetch } from '@/hooks/useFetch';
 import Image from 'next/image';
 
 import cardSkeleton from '@/assets/cardSkelleton.svg';
@@ -18,7 +18,7 @@ export function Products({}: IProps) {
   }
 
   return (
-    <Styled.Section>
+    <Styled.Section role='productGrid'>
       {!loading
         ? data &&
           data.map((product) => (

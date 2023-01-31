@@ -4,6 +4,7 @@ import { ProductCard } from '@/components/Products/ProductCard';
 import CartProvider, { CartContext } from '@/context/cartContext';
 import { IData } from '@/hooks/useFetch';
 import { Sidebar } from '@/components/SideBar/Sidebar';
+import '@testing-library/jest-dom';
 
 const product = {
   name: 'Test Product',
@@ -55,10 +56,10 @@ describe('testando o carrinho de compras', () => {
     const productQuantity = screen.getByText(product.quantity);
     const productPrice = screen.queryAllByText(`R$${product.price}`);
 
-    expect(productImg).toBeDefined();
-    expect(productName).toBeDefined();
-    expect(productQuantity).toBeDefined();
-    expect(productPrice).toBeDefined();
+    expect(productImg).toBeInTheDocument();
+    expect(productName).toBeInTheDocument();
+    expect(productQuantity).toBeInTheDocument();
+    expect(productPrice[0]).toBeInTheDocument();
   });
 
   it('adicionar novo produto ao carrinho', () => {
@@ -71,12 +72,12 @@ describe('testando o carrinho de compras', () => {
       </CartProvider>
     );
 
-    const addToCartButton = screen.getByTestId('comprar');
+    const addToCartButton = screen.getByRole('comprar');
 
     //adiciona produto ao carrinho
     fireEvent.click(addToCartButton);
 
-    const productsSection = screen.getByTestId('section');
+    const productsSection = screen.getByRole('cartProductGrid');
 
     //verifica se o novo produto foi renderizado na tela
     expect(productsSection.children).toHaveLength(1);
@@ -92,12 +93,12 @@ describe('testando o carrinho de compras', () => {
       </CartProvider>
     );
 
-    const addToCartButton = screen.getByTestId('comprar');
+    const addToCartButton = screen.getByRole('comprar');
 
     //adiciona produto ao carrinho
     fireEvent.click(addToCartButton);
 
-    const productsSection = screen.getByTestId('section');
+    const productsSection = screen.getByRole('cartProductGrid');
 
     //verifica se o produto foi adicionado
     expect(productsSection.children).toHaveLength(1);
@@ -123,12 +124,12 @@ describe('testando o carrinho de compras', () => {
       </CartProvider>
     );
 
-    const addToCartButton = screen.getByTestId('comprar');
+    const addToCartButton = screen.getByRole('comprar');
 
     //adiciona produto ao carrinho
     fireEvent.click(addToCartButton);
 
-    const productsSection = screen.getByTestId('section');
+    const productsSection = screen.getByRole('cartProductGrid');
 
     //verifica se o produto foi adicionado
     expect(productsSection.children).toHaveLength(1);
@@ -155,12 +156,12 @@ describe('testando o carrinho de compras', () => {
       </CartProvider>
     );
 
-    const addToCartButton = screen.getByTestId('comprar');
+    const addToCartButton = screen.getByRole('comprar');
 
     //adiciona produto ao carrinho
     fireEvent.click(addToCartButton);
 
-    const productsSection = screen.getByTestId('section');
+    const productsSection = screen.getByRole('cartProductGrid');
 
     //verifica se o produto foi adicionado
     expect(productsSection.children).toHaveLength(1);
@@ -188,12 +189,12 @@ describe('testando o carrinho de compras', () => {
       </CartProvider>
     );
 
-    const addToCartButton = screen.getByTestId('comprar');
+    const addToCartButton = screen.getByRole('comprar');
 
     //adiciona produto ao carrinho
     fireEvent.click(addToCartButton);
 
-    const productsSection = screen.getByTestId('section');
+    const productsSection = screen.getByRole('cartProductGrid');
 
     //verifica se o produto foi adicionado
     expect(productsSection.children).toHaveLength(1);
@@ -231,12 +232,12 @@ describe('testando o carrinho de compras', () => {
       </CartProvider>
     );
 
-    const addToCartButton = screen.getByTestId('comprar');
+    const addToCartButton = screen.getByRole('comprar');
 
     //adiciona produto ao carrinho
     fireEvent.click(addToCartButton);
 
-    const productsSection = screen.getByTestId('section');
+    const productsSection = screen.getByRole('cartProductGrid');
 
     //verifica se o produto foi adicionado
     expect(productsSection.children).toHaveLength(1);

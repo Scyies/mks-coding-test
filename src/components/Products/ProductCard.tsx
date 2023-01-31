@@ -58,10 +58,7 @@ export function ProductCard({ name, img, desc, price, id }: IProps) {
         <Styled.ProductPrice>R${price}</Styled.ProductPrice>
       </Styled.ProductNameContainer>
       <Styled.ProductDescription>{desc}</Styled.ProductDescription>
-      <Styled.ProductButton
-        onClick={() => addProductToCart(id)}
-        data-testid='comprar'
-      >
+      <Styled.ProductButton onClick={() => addProductToCart(id)} role='comprar'>
         <ShoppingBagOpen size={20} weight='bold' /> COMPRAR
       </Styled.ProductButton>
     </Styled.CardContainer>
