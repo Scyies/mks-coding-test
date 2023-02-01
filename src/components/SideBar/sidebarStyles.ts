@@ -83,6 +83,12 @@ export const ProductsSection = styled.section`
   flex: 1;
   flex-direction: column;
   gap: 2rem;
+  padding: 0.5rem;
 
   margin-top: 1rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
 `;

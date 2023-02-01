@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+  width: 0.25em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: blue;
+}
+
 html,
 body,
 div,
