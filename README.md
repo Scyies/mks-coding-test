@@ -6,7 +6,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://windbnb-liard.vercel.app/">
+    <a href="https://mks-coding-test.vercel.app/">
       Demo
     </a>
     <span> | </span>
