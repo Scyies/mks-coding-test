@@ -1,10 +1,16 @@
-import { Header } from '@/components/Header/Header';
-import Head from 'next/head';
 import * as Styled from '../styles/mainStyles';
+import Head from 'next/head';
+import { Header } from '@/components/Header/Header';
 import { Products } from '@/components/Products/Products';
 import { Footer } from '@/components/Footer/Footer';
+import { useGetFirstProductsQuery } from '@/context/productsApi';
 
 export default function Home() {
+  const { data, error, isLoading } = useGetFirstProductsQuery(1);
+
+  if (error) {
+    console.error(error);
+  }
   return (
     <>
       <Head>
@@ -15,7 +21,7 @@ export default function Home() {
       </Head>
       <Styled.Main>
         <Header />
-        <Products />
+        <Products data={data} isLoading={isLoading} />
         <Footer />
       </Styled.Main>
     </>

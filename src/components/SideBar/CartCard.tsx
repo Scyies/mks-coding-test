@@ -1,4 +1,5 @@
-import { IDataContext, useCartData } from '@/context/cartContext';
+import { decreaseQtd, increaseQtd, removeCartItems } from '@/context/cartSlice';
+import { useAppDispatch } from '@/hooks/reduxHooks';
 import Image from 'next/image';
 import * as Styled from './cartCardStyles';
 
@@ -14,37 +15,12 @@ interface IProps {
 export function CartCard({
   name,
   img,
-  quantity = 1,
+  quantity,
   price,
   cartPrice = price,
   id,
 }: IProps) {
-  const { cartItems, setCartItems } = useCartData() as IDataContext;
-
-  function addItemQuantity(id: number, signal: 'diminuir' | 'aumentar') {
-    const currentItem = cartItems.filter((item) => item.id === id);
-    if (currentItem[0].quantity === 1 && signal === 'diminuir') {
-      return setCartItems((prev) => prev.filter((item) => item.id !== id));
-    }
-    setCartItems((prev) =>
-      prev.map((item) => {
-        const resolver =
-          signal === 'diminuir' ? item.quantity! - 1 : item.quantity! + 1;
-        if (item.id === id) {
-          return {
-            ...item,
-            quantity: resolver,
-            cartPrice: String(Number(item.price) * resolver),
-          };
-        }
-        return item;
-      })
-    );
-  }
-
-  function deleteItemFromCart(id: number) {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  }
+  const dispatch = useAppDispatch();
   return (
     <Styled.CardContainer>
       <Image src={img} alt='' height={80} width={80} />
@@ -52,21 +28,17 @@ export function CartCard({
       <Styled.QtdContainer>
         <Styled.Qtd>Qtd:</Styled.Qtd>
         <Styled.QtdCounter>
-          <Styled.ChangeQuantity
-            onClick={() => addItemQuantity(id, 'diminuir')}
-          >
+          <Styled.ChangeQuantity onClick={() => dispatch(decreaseQtd(id))}>
             -
           </Styled.ChangeQuantity>
           <Styled.QtdNumber data-testid='quantity'>{quantity}</Styled.QtdNumber>
-          <Styled.ChangeQuantity
-            onClick={() => addItemQuantity(id, 'aumentar')}
-          >
+          <Styled.ChangeQuantity onClick={() => dispatch(increaseQtd(id))}>
             +
           </Styled.ChangeQuantity>
         </Styled.QtdCounter>
       </Styled.QtdContainer>
       <Styled.ProductPrice>R${cartPrice}</Styled.ProductPrice>
-      <Styled.Exit onClick={() => deleteItemFromCart(id)}>X</Styled.Exit>
+      <Styled.Exit onClick={() => dispatch(removeCartItems(id))}>X</Styled.Exit>
     </Styled.CardContainer>
   );
 }

@@ -1,7 +1,8 @@
-import { IDataContext, useCartData } from '@/context/cartContext';
+import * as Styled from './sidebarStyles';
 import { Dispatch, SetStateAction } from 'react';
 import { CartCard } from './CartCard';
-import * as Styled from './sidebarStyles';
+import { useAppSelector } from '@/hooks/reduxHooks';
+import { selectCart, totalCart } from '@/context/cartSlice';
 
 interface IProps {
   setStatus: Dispatch<SetStateAction<boolean>>;
@@ -9,11 +10,10 @@ interface IProps {
 }
 
 export function Sidebar({ setStatus, status }: IProps) {
-  const { cartItems } = useCartData() as IDataContext;
+  const cartItems = useAppSelector(selectCart);
 
-  const totalPrice = cartItems.reduce((acc, object) => {
-    return acc + Number(object.cartPrice!);
-  }, 0);
+  const cartTotal = useAppSelector(totalCart);
+
   return (
     <Styled.Sidebar aria-expanded={status}>
       <Styled.FlexCenter>
@@ -34,7 +34,7 @@ export function Sidebar({ setStatus, status }: IProps) {
       </Styled.ProductsSection>
       <Styled.FlexCenter>
         <Styled.HeadingText>Total:</Styled.HeadingText>
-        <Styled.HeadingText>R${totalPrice}</Styled.HeadingText>
+        <Styled.HeadingText>R${cartTotal}</Styled.HeadingText>
       </Styled.FlexCenter>
       <Styled.Button>Finalizar Compra</Styled.Button>
     </Styled.Sidebar>
