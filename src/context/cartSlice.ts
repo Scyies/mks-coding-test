@@ -36,10 +36,8 @@ export const cartSlice = createSlice({
       if (repeatedIndex >= 0) {
         state.cartItems[repeatedIndex].quantity! += 1;
         state.cartItems[repeatedIndex].cartPrice! = String(
-          (
-            Number(state.cartItems[repeatedIndex].price) *
+          Number(state.cartItems[repeatedIndex].price) *
             state.cartItems[repeatedIndex].quantity!
-          ).toFixed(2)
         );
       } else {
         const newProduct = { ...action.payload, quantity: 1 };
@@ -58,10 +56,8 @@ export const cartSlice = createSlice({
       );
       state.cartItems[productIndex].quantity! += 1;
       state.cartItems[productIndex].cartPrice! = String(
-        (
-          Number(state.cartItems[productIndex].price) *
+        Number(state.cartItems[productIndex].price) *
           state.cartItems[productIndex].quantity!
-        ).toFixed(2)
       );
     },
     decreaseQtd: (state, action: PayloadAction<number>): void => {
@@ -71,10 +67,8 @@ export const cartSlice = createSlice({
       if (state.cartItems[productIndex].quantity! > 1) {
         state.cartItems[productIndex].quantity! -= 1;
         state.cartItems[productIndex].cartPrice! = String(
-          (
-            Number(state.cartItems[productIndex].price) *
+          Number(state.cartItems[productIndex].price) *
             state.cartItems[productIndex].quantity!
-          ).toFixed(2)
         );
       } else {
         const updatedState = state.cartItems.filter(

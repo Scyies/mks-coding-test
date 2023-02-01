@@ -1,38 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">MKS Sistemas coding test</h1>
 
-## Getting Started
+<div align="center">
+   Desenvolver uma aplicação para exibir produtos de uma API REST com carrinho de compras com base no design do <a href="https://www.figma.com/file/Z4z8osDbK1ET7cjNzFRMrK/MKS-Front-end-challenge?node-id=0%3A1" target="_blank">Figma</a>.
+</div>
 
-First, run the development server:
+<div align="center">
+  <h3>
+    <a href="https://windbnb-liard.vercel.app/">
+      Demo
+    </a>
+    <span> | </span>
+    <a href="#tecnologias">
+      Tecnologias
+    </a>
+  </h3>
+</div>
+
+### Tecnologias
+
+- [Next](https://nextjs.org/)
+- [Styled Components](https://styled-components.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Redux toolkit](https://redux.js.org/)
+- [Jest](https://jestjs.io/)
+- [Testing Library](https://testing-library.com/)
+
+### Como utilizar
+
+Este é um projeto Next.js criado com create-next-app.
+
+Começando
+Primeiro, execute o servidor de desenvolvimento:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+$ npm run dev
+# ou
+$ yarn dev
+# ou
+$ pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000] com seu navegador para ver o resultado.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Você pode começar a editar a página modificando `pages/index.tsx`. A página atualiza automaticamente conforme você edita o arquivo.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+As rotas da API podem ser acessadas em [http://localhost:3000/api/hello]. Este endpoint pode ser editado em `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+O diretório `pages/api` é mapeado para `/api/*`. Arquivos neste diretório são tratados como rotas da API ao invés de páginas React.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este projeto usa `next/font` para otimizar e carregar automaticamente a fonte Inter, uma fonte personalizada do Google.

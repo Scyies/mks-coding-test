@@ -37,7 +37,9 @@ export function CartCard({
           </Styled.ChangeQuantity>
         </Styled.QtdCounter>
       </Styled.QtdContainer>
-      <Styled.ProductPrice>R${cartPrice}</Styled.ProductPrice>
+      <Styled.ProductPrice>
+        R${String(Number(cartPrice) * 1)}
+      </Styled.ProductPrice>
       <Styled.Exit onClick={() => dispatch(removeCartItems(id))}>X</Styled.Exit>
     </Styled.CardContainer>
   );

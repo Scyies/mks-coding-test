@@ -25,7 +25,7 @@ export function ProductCard({ name, photo, description, price, id }: IData) {
       <Image src={photo} alt='' width={150} height={150} />
       <Styled.ProductNameContainer>
         <Styled.ProductName>{name}</Styled.ProductName>
-        <Styled.ProductPrice>R${price}</Styled.ProductPrice>
+        <Styled.ProductPrice>R${String(Number(price) * 1)}</Styled.ProductPrice>
       </Styled.ProductNameContainer>
       <Styled.ProductDescription>{description}</Styled.ProductDescription>
       <Styled.ProductButton

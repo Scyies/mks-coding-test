@@ -32,6 +32,8 @@ export const ProductNameContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   place-items: center;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const ProductName = styled.span`
